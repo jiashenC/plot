@@ -5,6 +5,7 @@ import argparse
 import numpy as np
 import matplotlib.pyplot as plt
 
+from math import ceil
 from fractions import Fraction
 
 from config import *
@@ -149,7 +150,12 @@ def main():
             )
 
             compute_x1, compute_y1 = mem_x2, log2(compute_bandwidth)
-            compute_x2, compute_y2 = max_x_tick, log2(compute_bandwidth)
+            (
+                compute_x2,
+                compute_y2,
+            ) = max_x_tick if max_x_tick > mem_x2 else ceil(mem_x2) + 1, log2(
+                compute_bandwidth
+            )
 
             ax.plot(
                 [mem_x1, mem_x2],
@@ -195,6 +201,28 @@ def main():
                 color=COLOR["blue"],
             )
 
+            while max_x_tick - 1 < mem_x2:
+                power = x_tick_list[-1] + 1
+                x_tick_list.append(power)
+                if power < 0:
+                    x_tick_label_list.append(
+                        Fraction(1 / 2**-power).limit_denominator()
+                    )
+                else:
+                    x_tick_label_list.append(2**power)
+                max_x_tick = max(x_tick_list)
+
+            while max_y_tick < mem_y2:
+                power = y_tick_list[-1] + 1
+                y_tick_list.append(power)
+                if power < 0:
+                    y_tick_label_list.append(
+                        Fraction(1 / 2**-power).limit_denominator()
+                    )
+                else:
+                    y_tick_label_list.append(2**power)
+                max_y_tick = max(y_tick_list)
+
     idx = 0
     for x_list, y_list in zip(all_x_list, all_y_list):
         ax.scatter(
@@ -217,6 +245,14 @@ def main():
 
     ax.set_xlabel("Arithmetic Intensity (ops/byte)", {"fontweight": "bold"})
     ax.set_ylabel("Attainable Bandwidth (Gops/sec)", {"fontweight": "bold"})
+
+    plt.legend(
+        ncol=len(all_x_list),
+        frameon=False,
+        fancybox=False,
+        bbox_to_anchor=(0.5, 1.1),
+        loc="center",
+    )
 
     plt.tight_layout()
     plt.savefig("roofline.pdf")
