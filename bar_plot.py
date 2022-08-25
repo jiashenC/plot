@@ -22,6 +22,7 @@ def main():
         default=False,
         help="Whether to draw stacked bar plots.",
     )
+    parser.add_argument("--fig-size", nargs="+", type=int, default=(5, 2))
     args = parser.parse_args()
 
     color = [
@@ -50,7 +51,7 @@ def main():
                         cat.append(d)
 
     # figure creation
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=args.fig_size)
 
     # draw bar chart
     if args.stack:
@@ -84,7 +85,7 @@ def main():
         ncol=sub_cat_length,
         frameon=False,
         fancybox=False,
-        bbox_to_anchor=(0.5, 1.05),
+        bbox_to_anchor=(0.5, 1.1),
         loc="center",
     )
 

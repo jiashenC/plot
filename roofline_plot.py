@@ -37,6 +37,7 @@ def main():
         required=True,
         help="Algorithm file path.",
     )
+    parser.add_argument("--fig-size", nargs="+", type=int, default=(5, 4))
     args = parser.parse_args()
 
     linestyle_list = [LINE["solid"], LINE["dotted"]]
@@ -126,7 +127,7 @@ def main():
     min_y_tick, max_y_tick = min(y_tick_list), max(y_tick_list)
 
     # figure creation
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=args.fig_size)
 
     # draw the ceilings first
     x_vals_list = []
