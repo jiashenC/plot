@@ -1,0 +1,6 @@
+Cat,Dog,Rabbit,Tiger,Pig
+1,2,3,10,2,Atlanta
+2,5,1,1,4,Los Angeles
+6,4,2,1,2,New York
+2,5,3,1,4,Paris
+2,2,3,4,1,London

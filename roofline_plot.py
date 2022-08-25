@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 
-from itertools import starmap
 import math
 import argparse
 import numpy as np
 import matplotlib.pyplot as plt
 
 from fractions import Fraction
-from labellines import labelLine, labelLines
 
 from config import *
 

@@ -28,3 +28,6 @@ LINE = {
     "dashed": (0, (5, 10)),
     "dotteddashed": (0, (3, 5, 1, 5, 1, 5)),
 }
+
+BAR_WIDTH = 1
+BAR_GAP = 5
