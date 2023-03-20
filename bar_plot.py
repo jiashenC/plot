@@ -90,7 +90,7 @@ def main():
     )
 
     plt.tight_layout()
-    plt.savefig("bar.pdf")
+    plt.savefig("bar.png")
 
 
 if __name__ == "__main__":

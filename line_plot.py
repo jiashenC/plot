@@ -53,7 +53,7 @@ def main():
                 ax.plot(x_list, y_list, color=color[i // 2], marker=marker[i // 2], label=label)
 
     plt.tight_layout()
-    plt.savefig("line.pdf")
+    plt.savefig("line.png")
 
 
 if __name__ == "__main__":

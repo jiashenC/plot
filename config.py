@@ -29,5 +29,12 @@ LINE = {
     "dotteddashed": (0, (3, 5, 1, 5, 1, 5)),
 }
 
+HATCH = {
+    "left": "//",
+    "right": "\\\\",
+    "dot": ".",
+    "horizontal": "-",
+}
+
 BAR_WIDTH = 1
 BAR_GAP = 5

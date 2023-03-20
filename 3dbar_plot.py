@@ -27,6 +27,12 @@ def main():
         COLOR["green"],
     ]
 
+    hatch = [
+        HATCH["left"],
+        HATCH["right"],
+        HATCH["dot"],
+    ]
+
     sub_cat_repeat, sub_cat_length, sub_cat, sub_cat_data_group = 0, 0, [], []
     cat = set([])
 
@@ -64,7 +70,7 @@ def main():
             if k == 0:
                 ax.bar(x, height, color=color[i], bottom=bottom, label=sub_cat[i])
             else:
-                ax.bar(x, height, color=color[i], bottom=bottom)
+                ax.bar(x, height, color=color[i], bottom=bottom, hatch=hatch[k - 1])
             bottom += np.array(height)
     xtick_list = (
         np.arange(len(cat)) * (sub_cat_length * BAR_WIDTH + BAR_GAP)
@@ -85,7 +91,7 @@ def main():
     )
 
     plt.tight_layout()
-    plt.savefig("3dbar.pdf")
+    plt.savefig("3dbar.png")
 
 
 if __name__ == "__main__":
